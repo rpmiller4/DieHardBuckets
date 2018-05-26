@@ -10,6 +10,11 @@ namespace BucketProblems
     {
         static void Main(string[] args)
         {
+            var firstBucket = new Bucket(5);
+            var secondBucket = new Bucket(3);
+
+            //Setup
+            var bucketLab = new BucketLab(firstBucket, secondBucket);
         }
     }
 }
