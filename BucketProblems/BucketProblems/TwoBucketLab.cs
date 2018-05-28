@@ -10,11 +10,15 @@ namespace BucketProblems
     {
         public Bucket BucketA { get; set; }
         public Bucket BucketB { get; set; }
+        public int SolutionVolume { get; set; }
+        public List<int[]> StateSequence { get; set; }
 
-        public TwoBucketLab(Bucket bucketA, Bucket bucketB)
+        public TwoBucketLab(Bucket bucketA, Bucket bucketB, int solutionVolume)
         {
             BucketA = bucketA;
             BucketB = bucketB;
+            SolutionVolume = solutionVolume;
+            StateSequence = new List<int[]>();
         }
 
         public void FillBucket(Bucket bucket)
@@ -52,6 +56,24 @@ namespace BucketProblems
         public override string ToString()
         {
             return $"({BucketA.Volume}, {BucketB.Volume})";
+        }
+
+        public int[] GetVolumes()
+        {
+            return new[] {BucketA.Volume, BucketB.Volume, BucketA.Volume + BucketB.Volume};
+        }
+
+        public bool IsSolution()
+        {
+            return GetVolumes().Any(x => x == SolutionVolume);
+        }
+
+        /// <summary>
+        /// Logs first bucket, second bucket, and the sum volume.
+        /// </summary>
+        public void LogState()
+        {
+            StateSequence.Add(GetVolumes());
         }
     }
 }

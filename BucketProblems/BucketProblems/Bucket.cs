@@ -75,6 +75,15 @@ namespace BucketProblems
 
             return false;
         }
+
+        /// <summary>
+        /// Whatever space is left to fill in the bucket.
+        /// </summary>
+        /// <returns></returns>
+        public int CurrentCapacity()
+        {
+            return BucketSize - Volume;
+        }
     }
 
     public enum BucketState

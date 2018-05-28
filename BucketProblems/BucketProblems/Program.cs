@@ -10,12 +10,18 @@ namespace BucketProblems
     {
         static void Main(string[] args)
         {
+            ManuallySolveForFour();
+        }
+
+        private static void ManuallySolveForFour()
+        {
             var firstBucket = new Bucket(5);
             var secondBucket = new Bucket(3);
+            int desiredSolution = 4;
 
             //Setup
-            var bucketLab = new TwoBucketLab(firstBucket, secondBucket);
-            
+            var bucketLab = new TwoBucketLab(firstBucket, secondBucket, desiredSolution);
+
             Console.WriteLine(bucketLab);
             bucketLab.FillBucket(firstBucket);
             Console.WriteLine(bucketLab);
