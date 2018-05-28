@@ -7,10 +7,14 @@ using System.Threading.Tasks;
 namespace BucketProblems
 {
     //Bucket Operations
-    interface IManipulateBuckets
+    interface IUnaryBucketOperations
     {
         void FillBucket(Bucket bucket);
         void EmptyBucket(Bucket bucket);
+    }
+
+    interface IBinaryBucketOperations
+    {
         void Transfer(Bucket source, Bucket target);
         void Transfer(Bucket source, Bucket target, int volume);
     }

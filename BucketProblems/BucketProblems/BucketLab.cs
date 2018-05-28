@@ -9,14 +9,8 @@ namespace BucketProblems
     /// <summary>
     /// Represents a two bucket setup.
     /// </summary>
-    public class BucketLab
+    abstract class BucketLab
     {
-        public Bucket BucketA { get; set; }
-        public Bucket BucketB { get; set; }
-        public BucketLab(Bucket bucketA, Bucket bucketB)
-        {
-            BucketA = bucketA;
-            BucketB = bucketB;
-        }
+        public Bucket[] Buckets { get; set; }
     }
 }

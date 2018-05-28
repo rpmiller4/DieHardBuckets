@@ -11,12 +11,76 @@ namespace BucketProblems
     /// </summary>
     public class Bucket
     {
-        private int BucketSize { get; set; }
+        public int BucketSize { get; set; }
         public int Volume { get; set; }
+        public BucketState BucketState { get; set;}
+
 
         public Bucket(int bucketSize)
         {
             BucketSize = bucketSize;
+            Volume = 0;
         }
+
+        public bool FillBucket()
+        {
+            if (Volume == 0)
+            {
+                Volume = BucketSize;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool EmptyBucket()
+        {
+            if (Volume != 0)
+            {
+                Volume = 0;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Add specific amount, but never allow overflow
+        /// </summary>
+        /// <returns>Add operation was successful</returns>
+        public bool Add(int volume)
+        {
+            if (Volume + volume >= 0 && Volume + volume <= BucketSize)
+            {
+                Volume += volume;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool Subtract(int volume)
+        {
+            if (Volume - volume >= 0 && Volume - volume <= BucketSize)
+            {
+                Volume -= volume;
+                return true;
+            }
+
+            return false;
+        }
+    }
+
+    public enum BucketState
+    {
+        Empty,
+        Full,
+        Other
     }
 }
