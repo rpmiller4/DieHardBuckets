@@ -17,14 +17,15 @@ namespace BucketProblems
             // Initialize Problem
 
             List<List<int[]>> sequences = new List<List<int[]>>();
+            List<List<int[]>> solutionsSequences = new List<List<int[]>>();
 
 
-            for (int i = 0; i < 500; i++)
+            for (int i = 0; i < 5000; i++)
             {
 
                 var firstBucket = new Bucket(5);
-                var secondBucket = new Bucket(3);
-                int desiredSolutionVolume = 4;
+                var secondBucket = new Bucket(7);
+                int desiredSolutionVolume = 1;
                 TwoBucketLab twoBucketLab = new TwoBucketLab(firstBucket, secondBucket, desiredSolutionVolume);
 
                 NaiveMonteCarloSolver naiveMonteCarloSolver = new NaiveMonteCarloSolver();
@@ -39,14 +40,15 @@ namespace BucketProblems
                 Console.WriteLine("Done!");
                 if (twoBucketLab.IsSolution())
                 {
+                    solutionsSequences.Add(cleanSequence);
                     Console.WriteLine("Really Done!");
                     //break;
                 }
             }
 
-            var sequencesByLength = sequences.OrderBy(m => m.Count());
+            var sequencesByLength = solutionsSequences.Where(s=>s.First()[0] ==0 && s.First()[1] == 0).OrderBy(m => m.Count());
 
-            var firstTen = sequencesByLength.Take(10).ToList();
+            var firstTen = sequencesByLength.Take(20).ToList();
 
             foreach (var sequence in firstTen)
             {

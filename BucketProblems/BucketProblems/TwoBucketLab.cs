@@ -67,7 +67,9 @@ namespace BucketProblems
 
         public bool IsSolution()
         {
-            return GetVolumes().Take(2).Any(x => x == SolutionVolume);
+            var volumes = GetVolumes();
+            bool oneZero = volumes.Take(2).Any(x => x == 0);
+            return volumes[2] == SolutionVolume && oneZero;
         }
 
         /// <summary>
