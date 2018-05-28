@@ -45,6 +45,7 @@
     <Compile Include="Bucket.cs" />
     <Compile Include="BucketLab.cs" />
     <Compile Include="IManipulateBuckets.cs" />
+    <Compile Include="Solver\NaiveMonteCarloSolver.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TwoBucketLab.cs" />

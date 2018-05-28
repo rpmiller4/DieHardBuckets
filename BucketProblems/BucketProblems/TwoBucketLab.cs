@@ -12,6 +12,7 @@ namespace BucketProblems
         public Bucket BucketB { get; set; }
         public int SolutionVolume { get; set; }
         public List<int[]> StateSequence { get; set; }
+        public List<int[]> StateSequenceNoRepeats { get; set; }
 
         public TwoBucketLab(Bucket bucketA, Bucket bucketB, int solutionVolume)
         {
@@ -19,6 +20,7 @@ namespace BucketProblems
             BucketB = bucketB;
             SolutionVolume = solutionVolume;
             StateSequence = new List<int[]>();
+            StateSequenceNoRepeats = new List<int[]>();
         }
 
         public void FillBucket(Bucket bucket)
@@ -44,7 +46,7 @@ namespace BucketProblems
             int targetCapacity = target.BucketSize - target.Volume;
             int sourceVolume = source.Volume;
 
-            if (targetCapacity <= sourceVolume)
+            if (targetCapacity >= volume)
             {
                 if (target.Add(volume))
                 {
@@ -65,7 +67,7 @@ namespace BucketProblems
 
         public bool IsSolution()
         {
-            return GetVolumes().Any(x => x == SolutionVolume);
+            return GetVolumes().Take(2).Any(x => x == SolutionVolume);
         }
 
         /// <summary>
@@ -74,6 +76,21 @@ namespace BucketProblems
         public void LogState()
         {
             StateSequence.Add(GetVolumes());
+        }
+
+        public void LogUniqueState()
+        {
+            var currentState = GetVolumes();
+
+            if (StateSequenceNoRepeats.Count > 0 && StateSequenceNoRepeats.Last() != currentState)
+            {
+
+                if (currentState == new int[] {0, 0, 0})
+                {
+                    StateSequenceNoRepeats.Clear();
+                }
+                StateSequenceNoRepeats.Add(currentState);
+            }
         }
     }
 }
