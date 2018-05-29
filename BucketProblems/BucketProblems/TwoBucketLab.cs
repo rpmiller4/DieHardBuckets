@@ -47,10 +47,11 @@ namespace BucketProblems
 
         public bool Transfer(Bucket source, Bucket target, int volume)
         {
-            int targetCapacity = target.BucketSize - target.Volume;
+            // constraint Transfer should only go through if a bucket is filled or a bucket is emptied
             int sourceVolume = source.Volume;
+            int targetVolume = target.Volume;
 
-            if (targetCapacity >= volume)
+            if (sourceVolume - volume == 0 || targetVolume + volume == target.BucketSize)
             {
                 if (target.Add(volume))
                 {
@@ -90,22 +91,6 @@ namespace BucketProblems
         public void LogState()
         {
             StateSequence.Add(GetVolumes());
-        }
-
-        public void LogUniqueState()
-        {
-            var currentState = GetVolumes();
-
-            if (StateSequenceNoRepeats.Count > 0 && StateSequenceNoRepeats.Last() != currentState)
-            {
-
-                if (currentState == new int[] {0, 0, 0})
-                {
-                    StateSequenceNoRepeats.Clear();
-                }
-
-                StateSequenceNoRepeats.Add(currentState);
-            }
         }
     }
 }

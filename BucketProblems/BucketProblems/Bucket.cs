@@ -70,8 +70,10 @@ namespace BucketProblems
                 Volume -= volume;
                 return true;
             }
-
-            return false;
+            else
+            {
+                return false;
+            }
         }
 
         /// <summary>

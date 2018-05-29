@@ -20,7 +20,7 @@ namespace BucketProblems
             List<List<int[]>> solutionsSequences = new List<List<int[]>>();
 
 
-            for (int i = 0; i < 5000; i++)
+            for (int i = 0; i < 50000; i++)
             {
 
                 var firstBucket = new Bucket(3);
@@ -95,10 +95,10 @@ namespace BucketProblems
 
             foreach (var state in stateSequence)
             {
-                sb.AppendLine($"({state[0]}, {state[1]})");
+                sb.Append($"({state[0]}, {state[1]}), ");
             }
 
-            Console.WriteLine(sb);
+            Console.WriteLine(sb.ToString().TrimEnd(','));
         }
 
         private static void ManuallySolveForFour()

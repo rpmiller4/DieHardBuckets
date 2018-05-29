@@ -47,7 +47,7 @@ namespace BucketProblems.Solver
             var indexOfNonSelectedBucket = (indexOfSelectedBucket + 1) % buckets.Count;
             var randomlySelectedSecondBucket = buckets[indexOfNonSelectedBucket];
 
-            int operation = rng.Next(10);
+            int operation = rng.Next(3);
             switch (operation)
             {
                 case 0:
@@ -63,21 +63,21 @@ namespace BucketProblems.Solver
                     }
                     break;
                 case 2:
-                default:
                     // constrain transfer volume to volume less than or equal to source bucket and more than or equal to second bucket
+                    
                     int availableToTransfer = randomlySelectedBucket.Volume;
                     int availableCapacity = randomlySelectedSecondBucket.CurrentCapacity();
-
+                    
                     if (availableToTransfer > 0 && availableCapacity > 0)
                     {
                         if (rng.Next(2) == 1)
                         {
-                            {
-                                return TwoBucketLab.Transfer(randomlySelectedBucket, randomlySelectedSecondBucket,
-                                    availableToTransfer);
-                            }
+                            
+                            return TwoBucketLab.Transfer(randomlySelectedBucket, randomlySelectedSecondBucket,
+                                availableToTransfer);
+                            
                         }
-                        else
+                        else if (availableCapacity <= availableToTransfer)
                         {
                             return TwoBucketLab.Transfer(randomlySelectedBucket, randomlySelectedSecondBucket,
                                 availableCapacity);
