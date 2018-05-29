@@ -13,8 +13,6 @@ namespace BucketProblems
     {
         public int BucketSize { get; set; }
         public int Volume { get; set; }
-        public BucketState BucketState { get; set;}
-
 
         public Bucket(int bucketSize)
         {
@@ -84,12 +82,5 @@ namespace BucketProblems
         {
             return BucketSize - Volume;
         }
-    }
-
-    public enum BucketState
-    {
-        Empty,
-        Full,
-        Other
     }
 }

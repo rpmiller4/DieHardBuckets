@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BucketProblems", "BucketProblems\BucketProblems.csproj", "{52B0199D-86EA-46A5-B493-E5AF6D4CD7A0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BucketProblemTests", "BucketProblemTests\BucketProblemTests.csproj", "{3504FCD0-48E5-4955-9B84-5476C36CDE64}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{52B0199D-86EA-46A5-B493-E5AF6D4CD7A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52B0199D-86EA-46A5-B493-E5AF6D4CD7A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52B0199D-86EA-46A5-B493-E5AF6D4CD7A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3504FCD0-48E5-4955-9B84-5476C36CDE64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3504FCD0-48E5-4955-9B84-5476C36CDE64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3504FCD0-48E5-4955-9B84-5476C36CDE64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3504FCD0-48E5-4955-9B84-5476C36CDE64}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

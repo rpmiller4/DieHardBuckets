@@ -8,7 +8,7 @@ using BucketProblems.Solver;
 
 namespace BucketProblems
 {
-    class Program
+    partial class Program
     {
         static void Main(string[] args)
         {
@@ -23,14 +23,14 @@ namespace BucketProblems
             for (int i = 0; i < 5000; i++)
             {
 
-                var firstBucket = new Bucket(5);
-                var secondBucket = new Bucket(7);
-                int desiredSolutionVolume = 1;
+                var firstBucket = new Bucket(3);
+                var secondBucket = new Bucket(5);
+                int desiredSolutionVolume = 4;
                 TwoBucketLab twoBucketLab = new TwoBucketLab(firstBucket, secondBucket, desiredSolutionVolume);
 
                 NaiveMonteCarloSolver naiveMonteCarloSolver = new NaiveMonteCarloSolver();
                 naiveMonteCarloSolver.Initialize(twoBucketLab);
-                naiveMonteCarloSolver.RunWhileNotSolvedOrLimit(10000); // limit here, just in case
+                naiveMonteCarloSolver.RunWhileNotSolvedOrLimit(1000); // limit here, just in case
 
 
                 var cleanSequence = CleanSequence(twoBucketLab);
@@ -46,7 +46,11 @@ namespace BucketProblems
                 }
             }
 
-            var sequencesByLength = solutionsSequences.Where(s=>s.First()[0] ==0 && s.First()[1] == 0).OrderBy(m => m.Count());
+            var uniqueSequences = Comparers.GetUniqueSequences(solutionsSequences);
+
+            var sequencesByLength = uniqueSequences.Where(s=>s.First()[0] ==0 && s.First()[1] == 0).OrderBy(m => m.Count()).Where(c=>c.Count>1);
+
+
 
             var firstTen = sequencesByLength.Take(20).ToList();
 
@@ -71,7 +75,7 @@ namespace BucketProblems
                 if (state[0] == 0 && state[1] == 0)
                 {
                     cleanedSequence.Clear();
-                    cleanedSequence.Add(state);
+                    //cleanedSequence.Add(state);
                 }
 
                 if (lastA != state[0] || lastB != state[1])

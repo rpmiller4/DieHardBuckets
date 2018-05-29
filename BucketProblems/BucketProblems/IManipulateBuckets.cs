@@ -9,13 +9,13 @@ namespace BucketProblems
     //Bucket Operations
     interface IUnaryBucketOperations
     {
-        void FillBucket(Bucket bucket);
-        void EmptyBucket(Bucket bucket);
+        bool FillBucket(Bucket bucket);
+        bool EmptyBucket(Bucket bucket);
     }
 
     interface IBinaryBucketOperations
     {
-        void Transfer(Bucket source, Bucket target);
-        void Transfer(Bucket source, Bucket target, int volume);
+        bool Transfer(Bucket source, Bucket target);
+        bool Transfer(Bucket source, Bucket target, int volume);
     }
 }

@@ -30,12 +30,15 @@ namespace BucketProblems.Solver
 
         public void Run()
         {
-            DoRandomOperation();
-            TwoBucketLab.LogState();
+            if (DoRandomOperation())
+            {
+                TwoBucketLab.LogState();
+            }
+
             //TwoBucketLab.LogUniqueState();
         }
 
-        public void DoRandomOperation()
+        public bool DoRandomOperation()
         {
             List<Bucket> buckets = new List<Bucket> {TwoBucketLab.BucketA, TwoBucketLab.BucketB};
             var indexOfSelectedBucket = rng.Next(2);
@@ -50,13 +53,13 @@ namespace BucketProblems.Solver
                 case 0:
                     //if (randomlySelectedBucket.Volume == 0)
                     {
-                        TwoBucketLab.FillBucket(randomlySelectedBucket);
+                        return TwoBucketLab.FillBucket(randomlySelectedBucket);
                     }
                     break;
                 case 1:
                     //if (randomlySelectedSecondBucket.Volume != 0)
                     {
-                        TwoBucketLab.EmptyBucket(randomlySelectedBucket);
+                        return TwoBucketLab.EmptyBucket(randomlySelectedBucket);
                     }
                     break;
                 case 2:
@@ -69,25 +72,21 @@ namespace BucketProblems.Solver
                     {
                         if (rng.Next(2) == 1)
                         {
-                            //if (availableToTransfer <= availableCapacity)
                             {
-                                TwoBucketLab.Transfer(randomlySelectedBucket, randomlySelectedSecondBucket,
+                                return TwoBucketLab.Transfer(randomlySelectedBucket, randomlySelectedSecondBucket,
                                     availableToTransfer);
                             }
-                            //else
-                            //{
-                            //    TwoBucketLab.Transfer(randomlySelectedBucket, randomlySelectedSecondBucket,
-                            //        availableCapacity);
-                            //}
                         }
                         else
                         {
-                            TwoBucketLab.Transfer(randomlySelectedBucket, randomlySelectedSecondBucket,
+                            return TwoBucketLab.Transfer(randomlySelectedBucket, randomlySelectedSecondBucket,
                                 availableCapacity);
                         }
                     }
                     break;
             }
+
+            return false;
 
         }
     }

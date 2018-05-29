@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Bucket.cs" />
     <Compile Include="BucketLab.cs" />
+    <Compile Include="Comparers.cs" />
     <Compile Include="IManipulateBuckets.cs" />
     <Compile Include="Solver\NaiveMonteCarloSolver.cs" />
     <Compile Include="Program.cs" />

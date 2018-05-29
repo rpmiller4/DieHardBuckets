@@ -23,25 +23,29 @@ namespace BucketProblems
             StateSequenceNoRepeats = new List<int[]>();
         }
 
-        public void FillBucket(Bucket bucket)
+        public bool FillBucket(Bucket bucket)
         {
-            bucket.FillBucket();
+            return bucket.FillBucket();
         }
 
-        public void EmptyBucket(Bucket bucket)
+        public bool EmptyBucket(Bucket bucket)
         {
-            bucket.EmptyBucket();
+            return bucket.EmptyBucket();
         }
 
-        public void Transfer(Bucket source, Bucket target)
+        public bool Transfer(Bucket source, Bucket target)
         {
             if (target.Add(source.Volume))
             {
-                source.EmptyBucket();
+                return source.EmptyBucket();
+            }
+            else
+            {
+                return false;
             }
         }
 
-        public void Transfer(Bucket source, Bucket target, int volume)
+        public bool Transfer(Bucket source, Bucket target, int volume)
         {
             int targetCapacity = target.BucketSize - target.Volume;
             int sourceVolume = source.Volume;
@@ -50,8 +54,16 @@ namespace BucketProblems
             {
                 if (target.Add(volume))
                 {
-                    source.Subtract(volume);
+                    return source.Subtract(volume);
                 }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
             }
         }
 
@@ -91,6 +103,7 @@ namespace BucketProblems
                 {
                     StateSequenceNoRepeats.Clear();
                 }
+
                 StateSequenceNoRepeats.Add(currentState);
             }
         }
